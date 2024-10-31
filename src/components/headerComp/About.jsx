@@ -1,9 +1,7 @@
-import { Row, Navbar, Nav, Col } from "react-bootstrap"
-import { Link } from "react-router-dom";
 const About=()=>{
     return(
         <div>
-            <Row>
+            {/* <Row>
                 <Navbar expand="lg" className="bg-body-tertiary">
 
                     <Col>
@@ -14,7 +12,7 @@ const About=()=>{
                         </Nav>
                     </Col>
                 </Navbar>
-            </Row>
+            </Row> */}
             <p>about</p>
             {/* <button><Link to={"/mainPage"}>back to home page</Link></button> */}
         </div>

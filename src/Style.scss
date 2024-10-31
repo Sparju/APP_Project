@@ -1,0 +1,29 @@
+.headerComp {
+  position: fixed !important;
+  /* Fixes the header at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  /* Set the height of the header */
+  background-color: #3498db;
+  /* Background color */
+  color: white;
+  /* Text color */
+  display: flex;
+  /* Use flexbox for layout */
+  align-items: center;
+  /* Center items vertically */
+  padding: 0 20px;
+  /* Horizontal padding */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Optional shadow for effect */
+  z-index: 1000;
+  /* Ensure the header stays above other content */
+}
+
+.Cartdata {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+}

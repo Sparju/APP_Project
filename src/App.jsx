@@ -1,34 +1,36 @@
-import { Container, Row } from "react-bootstrap"
 
-import { Routes, Route } from "react-router-dom"
-import Register from "./components/Register";
-import Login from "./components/Login";
-import MainPage from "./components/interface/interface";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import About from "./components/headerComp/About";
-import Contact from "./components/headerComp/Contact";
-import Admin from "./components/Admin";
+import React, { useEffect } from 'react';
+import { Container, Row } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import MainUi from './components/interface/MainUi';
+import RouterConfig from './Router';
+import { login, logout } from './services/Action.js/ActionIndex';
 
 
 const App = () => {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log("User logged in:", isLoggedIn);
+  }, [isLoggedIn]);
+
+  const handleLogin = () => {
+    dispatch(login());
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
-
     <Container>
-
+      {isLoggedIn && <MainUi />} 
       <Row>
-        <Routes>
-          <Route path="/" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/mainPage" element={<MainPage />} />
-          <Route path="/admin" element={<Admin/>}/>
-          <Route path="/home" element={<Header />} />
-          <Route path="/footer" element={<Footer />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/Contact" element={<Contact />} />
-        </Routes>
+        <RouterConfig />
       </Row>
     </Container>
-  )
-}
+  );
+};
+
 export default App;
