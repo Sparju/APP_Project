@@ -1,0 +1,31 @@
+{
+  "students": [
+    {
+      "id": "2f04",
+      "userName": "sparjan",
+      "dob": "2001-12-29",
+      "email": "sparjan@gmail.com",
+      "password": "sparju11",
+      "confirmPassword": "sparju11",
+      "phoneNumber": 8886262732
+    },
+    {
+      "id": "fdf2",
+      "userName": "ravi",
+      "dob": "2002-05-19",
+      "email": "ravi@gmail.com",
+      "password": "123456",
+      "confirmPassword": "123456",
+      "phoneNumber": 6304171349
+    },
+    {
+      "id": "355e",
+      "userName": "kyathi varma",
+      "dob": "2001-12-12",
+      "email": "kyathi@gmail.com",
+      "password": "123456789",
+      "confirmPassword": "123456789",
+      "phoneNumber": 8886262732
+    }
+  ]
+}
