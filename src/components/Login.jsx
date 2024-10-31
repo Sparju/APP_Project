@@ -5,16 +5,19 @@ import * as Yup from "yup";
 import "./StyleSheets/login.css";
 import StudentServices from "../services/StudentServices";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link, useNavigate } from "react-router-dom"; 
 import MainPage from "./interface/interface";
 import Images from "../images/image";
+import Token from "../common/Token";
+import { login } from "../services/Action.js/ActionIndex";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
     const [logdata, setLogdata] = useState([]);
     const [data1, setData1] = useState([]);
     const [redirect, setRedirect] = useState(false);
-
-    const navigate = useNavigate(); // Initialize useNavigate
+    const dispatch = useDispatch();
+    const navigate = useNavigate(); 
 
     const validationSchema = Yup.object().shape({
         loginEmail: Yup.string().required("Email is required").email("Email is invalid"),
@@ -35,12 +38,14 @@ const Login = () => {
 
                 if (data.loginEmail === "Admin@gmail.com" && data.loginPassword === "sparjan") {
                     alert("Admin login successful");
-                    adminlogin(); // Call admin login function
+                    adminlogin(); 
                     setRedirect(false);
                 } else if (user) {
                     if (user.password === data.loginPassword) {
                         alert("Login successful");
-                        setRedirect(true);
+                            dispatch(login());
+                            Token.setUserLogin(true)
+                        navigate("/dashboard");
                         
                     } else {
                         alert("Incorrect password");
