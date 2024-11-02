@@ -114,7 +114,7 @@ const MainPage = ({ data }) => {
                 </Fab>
             </Box>
             <Row>
-                {location.pathname !== '/cart' && (
+                {/* {location.pathname !== '/cart' && ( */}
                     <>
                         <h2>Main Page</h2>
                         {userEmail}
@@ -141,7 +141,7 @@ const MainPage = ({ data }) => {
                             ))
                         ) : (<p>No products found</p>)}
                     </>
-                )}
+                {/* )} */}
             </Row>
             <Modal
                 open={open}

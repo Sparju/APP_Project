@@ -1,30 +1,32 @@
-import { useFormik } from "formik";
-import { Button, Col, Form, FormControl, FormGroup, FormLabel, Row, Container } from "react-bootstrap";
-import *as Yup from "yup";
-import StudentServices from "../services/StudentServices";
-import { Link } from "react-router-dom";
-import Images from "../images/image";
-import "./StyleSheets/register.css";
-
-
-
+import React, { useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { FormGroup, FormControl, Grid, TextField, Button, IconButton, InputAdornment, Box } from '@mui/material';
+import { Link } from 'react-router-dom';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+import StudentServices from '../services/StudentServices';
+import Images from '../images/image';
 
 const Register = () => {
-    const validationSchema = Yup.object().shape({
-        phoneNumber: Yup.number().required("phoneNumber is required and must be unique"),
-        userName: Yup.string().required("user name is required"),
-        dob: Yup.date().required("age is required"),
-        email: Yup.string().required("email is required").email("email is invalid"),
-        password: Yup.string().required("password is required").min(6, 'password must be ina 6 charecters').max(40, 'password must not exceded 40 charecters'),
-        confirmPassword: Yup.string().required("confirm password is required").oneOf([Yup.ref('password'), null], 'confirmPassword does not match')
+    const [alert, setAlert] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-    })
+    const validationSchema = Yup.object().shape({
+        phoneNumber: Yup.number().required("Phone number is required and must be unique"),
+        dob: Yup.date().required("Date of birth is required"),
+        userName: Yup.string().required("User name is required"),
+        email: Yup.string().required("Email is required").email("Email is invalid"),
+        password: Yup.string().required("Password is required").min(6, 'Password must be at least 6 characters').max(40, 'Password must not exceed 40 characters'),
+        confirmPassword: Yup.string().required("Confirm password is required").oneOf([Yup.ref('password'), null], 'Confirm password does not match')
+    });
+
     const formik = useFormik({
         initialValues: {
-
             userName: "",
-            dob: "",
             email: "",
+            dob: "",
             password: "",
             confirmPassword: "",
             phoneNumber: ""
@@ -34,125 +36,158 @@ const Register = () => {
             StudentServices.createStudentData(JSON.stringify(data, null, 1))
                 .then(res => {
                     console.log(res.data);
-                    resetForm(); // Reset the form after successful submission
+                    resetForm();
+                    setAlert(true);
                 })
                 .catch(e => console.log(e));
         }
-    })
+    });
 
     return (
-        <Container id="container1">
-            <Row>
-                <h3 id="heading1">welcome friend</h3>
-            </Row>
-            <Row>
-                <Col id="c1">
-                    <Form action="" onSubmit={formik.handleSubmit}>
-                        <FormGroup>
-                            <FormLabel htmlFor="userName">userName:</FormLabel>
-                            <FormControl
-                                type="text"
-                                className={"form-control" + formik.errors.userName && formik.touched.userName ? " is-invalid" : ""}
-                                name="userName" id="userName"
+        <Box className="regContainer">
+            <Grid container>
+                <Grid item sm={12}>
+                    {alert &&
+                        <Stack sx={{ width: '100%' }} spacing={2}>
+                            <Alert severity="success">User successfully registered</Alert>
+                        </Stack>}
+                </Grid>
+                <Grid item sm={6} className="gridItem">
+                    <form onSubmit={formik.handleSubmit}>
+                        <FormControl fullWidth>
+                            <TextField
+                                id="userName"
+                                label='Username'
+                                placeholder='Enter your username'
+                                variant="outlined"
+                                className={`textField ${formik.errors.userName && formik.touched.userName ? "is-invalid" : ""}`}
+                                name="userName"
                                 onChange={formik.handleChange}
                                 value={formik.values.userName}
+                                margin="dense"
                             />
                             <FormGroup className="invalid-feedback">
                                 {formik.errors.userName && formik.touched.userName ? formik.errors.userName : null}
                             </FormGroup>
-                        </FormGroup>
-                        <br />
-                        <FormGroup >
-                            <FormLabel htmlFor="email">email : </FormLabel>
-                            <FormControl
-                                type="email"
-                                className={"form-control" + formik.errors.email && formik.touched.email ? " is-invalid" : ""}
-                                name="email" id="email"
+                        </FormControl>
+                        <FormControl fullWidth>
+                            <TextField
+                                id="email"
+                                label='Email'
+                                placeholder='Enter your email'
+                                variant="outlined"
+                                className={`textField ${formik.errors.email && formik.touched.email ? "is-invalid" : ""}`}
+                                name="email"
                                 onChange={formik.handleChange}
                                 value={formik.values.email}
+                                margin="dense"
                             />
                             <FormGroup className="invalid-feedback">
                                 {formik.errors.email && formik.touched.email ? formik.errors.email : null}
                             </FormGroup>
-                        </FormGroup>
-                        <br />
-                        <FormGroup >
-                            <FormLabel htmlFor="password ">password : </FormLabel>
-                            <FormControl
-                                type="password"
-                                className={"form-control" + formik.errors.password && formik.touched.password ? " is-invalid" : ""}
-                                name="password" id="password"
+                        </FormControl>
+                        <FormControl fullWidth>
+                            <TextField
+                                id="password"
+                                label='Password'
+                                placeholder='Create a password'
+                                type={showPassword ? "text" : "password"}
+                                variant="outlined"
+                                className={`textField ${formik.errors.password && formik.touched.password ? "is-invalid" : ""}`}
+                                name="password"
                                 onChange={formik.handleChange}
                                 value={formik.values.password}
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                onClick={() => setShowPassword(!showPassword)}
+                                                edge="end"
+                                            >
+                                                {showPassword ? "👁️" : "👁️‍🗨️"}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    )
+                                }}
+                                margin="dense"
                             />
                             <FormGroup className="invalid-feedback">
                                 {formik.errors.password && formik.touched.password ? formik.errors.password : null}
                             </FormGroup>
-                        </FormGroup>
-                        <br />
-                        <FormGroup>
-                            <FormLabel htmlFor="confirmPassword">confirm password : </FormLabel>
-                            <FormControl
-                                type="password"
-                                className={"form-control" + formik.errors.confirmPassword && formik.touched.confirmPassword ? " is-invalid" : ""}
-                                name="confirmPassword" id="confirmPassword"
+                        </FormControl>
+                        <FormControl fullWidth>
+                            <TextField
+                                id="confirmPassword"
+                                label='Confirm Password'
+                                placeholder='Confirm your password'
+                                type={showConfirmPassword ? "text" : "password"}
+                                variant="outlined"
+                                className={`textField ${formik.errors.confirmPassword && formik.touched.confirmPassword ? "is-invalid" : ""}`}
+                                name="confirmPassword"
                                 onChange={formik.handleChange}
                                 value={formik.values.confirmPassword}
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                                edge="end"
+                                            >
+                                                {showConfirmPassword ? "👁️" : "👁️‍🗨️"}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    )
+                                }}
+                                margin="dense"
                             />
                             <FormGroup className="invalid-feedback">
                                 {formik.errors.confirmPassword && formik.touched.confirmPassword ? formik.errors.confirmPassword : null}
                             </FormGroup>
-                        </FormGroup>
-
-                        <br />
-                        <FormGroup >
-                            <FormLabel htmlFor="dob">dob : </FormLabel>
-                            <FormControl
+                        </FormControl>
+                        <FormControl fullWidth>
+                            <TextField
+                                id="dob"
                                 type="date"
-                                className={"form-control" + formik.errors.dob && formik.touched.dob ? " is-invalid" : ""}
-                                name="dob" id="dob"
+                                variant="outlined"
+                                className={`textField ${formik.errors.dob && formik.touched.dob ? "is-invalid" : ""}`}
+                                name="dob"
                                 onChange={formik.handleChange}
                                 value={formik.values.dob}
+                                margin="dense"
                             />
                             <FormGroup className="invalid-feedback">
                                 {formik.errors.dob && formik.touched.dob ? formik.errors.dob : null}
                             </FormGroup>
-                        </FormGroup>
-
-                        <br />
-                        <FormGroup >
-                            <FormLabel htmlFor="phoneNumber">phoneNumber : </FormLabel>
-                            <FormControl
+                        </FormControl>
+                        <FormControl fullWidth>
+                            <TextField
+                                id="phoneNumber"
+                                label='Phone Number'
+                                placeholder='Enter your phone number'
+                                variant="outlined"
+                                className={`textField ${formik.errors.phoneNumber && formik.touched.phoneNumber ? "is-invalid" : ""}`}
+                                name="phoneNumber"
                                 type="number"
-                                className={"form-control" + formik.errors.phoneNumber && formik.touched.phoneNumber ? " is-invalid" : ""}
-                                name="phoneNumber" id="phoneNumber"
                                 onChange={formik.handleChange}
                                 value={formik.values.phoneNumber}
+                                margin="dense"
                             />
                             <FormGroup className="invalid-feedback">
                                 {formik.errors.phoneNumber && formik.touched.phoneNumber ? formik.errors.phoneNumber : null}
                             </FormGroup>
-                        </FormGroup>
-
-                        <br />
-
-                        <FormGroup >
-                            <Button
-                                className="btn btn-primary"
-                                type="submit" id="regbut">
-                                register
-                            </ Button>
-                            <p id="p1">OR Already Have an Account</p> <Link to={"/login"} ><Button id="logbut">login</Button></Link>
-
-                        </FormGroup>
-                    </Form>
-                </Col>
-                <Col id="c2">
+                        </FormControl>
+                    </form>
+                </Grid>
+                <Grid item sm={6} className="gridItem">
                     <Images />
-                    {/* <img src="./images1/img1.jpg" alt=" no images" /> */}
-                </Col>
-            </Row>
-        </Container>
-    )
-}
+                    <Grid item textAlign={"center"}>
+                            <Button type="submit" variant="contained" className="submitButton">Register</Button>
+                            <p> OR Already Have an Account <Link to={"/login"}>Login</Link></p>
+                        </Grid>
+                </Grid>
+            </Grid>
+        </Box>
+    );
+};
+
 export default Register;
