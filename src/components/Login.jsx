@@ -1,6 +1,5 @@
-
 import { useFormik } from "formik";
-import { Button, Container, Col, Form, FormControl, FormGroup, FormLabel, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import * as Yup from "yup";
 import "./StyleSheets/login.css";
 import StudentServices from "../services/StudentServices";
@@ -11,11 +10,14 @@ import Images from "../images/image";
 import Token from "../common/Token";
 import { login } from "../services/Action.js/ActionIndex";
 import { useDispatch } from "react-redux";
+import { Box, Button, Grid, TextField, InputAdornment, IconButton, Alert } from "@mui/material";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const Login = () => {
-    const [logdata, setLogdata] = useState([]);
+    const [alert, setAlert] = useState({ loferr: false, logsucc: false });
     const [data1, setData1] = useState([]);
-    const [redirect, setRedirect] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate(); 
 
@@ -32,88 +34,106 @@ const Login = () => {
         validationSchema,
         onSubmit: async (data, { resetForm }) => {
             try {
-                setLogdata(prevData => [...prevData, data]);
                 resetForm();
                 const user = data1.find(user => user.email === data.loginEmail);
 
                 if (data.loginEmail === "Admin@gmail.com" && data.loginPassword === "sparjan") {
                     alert("Admin login successful");
                     adminlogin(); 
-                    setRedirect(false);
                 } else if (user) {
                     if (user.password === data.loginPassword) {
-                        alert("Login successful");
-                            dispatch(login());
-                            Token.setUserLogin(true)
+                        setAlert({ logsucc: true, loferr: false });
+                        dispatch(login());
+                        Token.setUserLogin(true);
                         navigate("/dashboard");
-                        
                     } else {
-                        alert("Incorrect password");
-                        setLogdata('')
+                        setAlert({ logsucc: false, loferr: true });
                     }
                 } else {
-                    alert("User not found");
+                    setAlert({ logsucc: false, loferr: true });
                 }
             } catch (error) {
                 console.error('Error logging in:', error);
-                alert('Error logging in');
+                setAlert({ logsucc: false, loferr: true });
             }
         }
     });
 
     const adminlogin = () => {
-        navigate("/admin"); // Redirect to the Admin component
+        navigate("/admin");
     };
 
     useEffect(() => {
         StudentServices.getAllStudents().then(res => setData1(res.data)).catch(err => console.log(err));
     }, []);
 
+    // Timer for alerts
+    useEffect(() => {
+        if (alert.logsucc || alert.loferr) {
+            const timer = setTimeout(() => {
+                setAlert({ logsucc: false, loferr: false });
+            }, 2000); // Alert will disappear after 3 seconds
+            return () => clearTimeout(timer); // Cleanup the timer on unmount
+        }
+    }, [alert]);
+
     return (
-        <Container id="logContainer">
-            {!redirect ? (
-                <Row>
-                    <Col id="c3">
-                        <Form onSubmit={formik.handleSubmit}>
-                            <FormGroup>
-                                <FormLabel htmlFor="email">Email: </FormLabel>
-                                <FormControl
-                                    type="email"
-                                    className={"form-control" + (formik.errors.loginEmail && formik.touched.loginEmail ? " is-invalid" : "")}
-                                    name="loginEmail" id="loginEmail"
-                                    onChange={formik.handleChange}
-                                    value={formik.values.loginEmail}
-                                />
-                                <FormGroup className="invalid-feedback">
-                                    {formik.errors.loginEmail && formik.touched.loginEmail ? formik.errors.loginEmail : null}
-                                </FormGroup>
-                            </FormGroup> <br />
-                            <FormGroup>
-                                <FormLabel htmlFor="password">Password: </FormLabel>
-                                <FormControl
-                                    type="password"
-                                    className={"form-control" + (formik.errors.loginPassword && formik.touched.loginPassword ? " is-invalid" : "")}
-                                    name="loginPassword" id="loginPassword"
-                                    onChange={formik.handleChange}
-                                    value={formik.values.loginPassword}
-                                />
-                                <FormGroup className="invalid-feedback">
-                                    {formik.errors.loginPassword && formik.touched.loginPassword ? formik.errors.loginPassword : null}
-                                </FormGroup>
-                            </FormGroup><br />
-                            <Button type="submit" id="subBut">Login</Button>
-                            <p id="p2">Register your account</p>
-                            <Link to={"/"}> <Button id="regbut1">Register</Button></Link>
-                        </Form>
-                    </Col>
-                    <Col id="c4">
-                        <Images />
-                    </Col>
-                </Row>
-            ) : (
-              <MainPage  data={logdata}/>
-            )}
-        </Container>
+        <Box className="logContainer">
+            {alert.logsucc && <Alert severity="success">Login Successfully</Alert>}
+            {alert.loferr && <Alert severity="error">Invalid user</Alert>}
+            <Row>
+                <Col id="c8">
+                    <form onSubmit={formik.handleSubmit}>
+                        <TextField
+                            label="Email"
+                            variant="outlined"
+                            fullWidth
+                            margin="normal"
+                            name="loginEmail"
+                            id="loginEmail"
+                            onChange={formik.handleChange}
+                            value={formik.values.loginEmail}
+                            error={formik.touched.loginEmail && Boolean(formik.errors.loginEmail)}
+                            helperText={formik.touched.loginEmail && formik.errors.loginEmail}
+                        />
+                        <TextField
+                            label="Password"
+                            variant="outlined"
+                            fullWidth
+                            margin="normal"
+                            name="loginPassword"
+                            id="loginPassword"
+                            type={showPassword ? 'text' : 'password'}
+                            onChange={formik.handleChange}
+                            value={formik.values.loginPassword}
+                            error={formik.touched.loginPassword && Boolean(formik.errors.loginPassword)}
+                            helperText={formik.touched.loginPassword && formik.errors.loginPassword}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            onClick={() => setShowPassword(prev => !prev)}
+                                            edge="end"
+                                        >
+                                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                        <Grid textAlign={"center"} mt={1}>
+                            <Button type="submit" variant="contained">Submit</Button>
+                        </Grid>
+                        <Grid textAlign={"center"} mt={1}>
+                            <span><Link to={"/"}> Register </Link>your account</span>
+                        </Grid>
+                    </form>
+                </Col>
+                <Col id="c4">
+                    <Images />
+                </Col>
+            </Row>
+        </Box>
     );
 };
 

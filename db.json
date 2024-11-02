@@ -27,5 +27,168 @@
       "confirmPassword": "123456789",
       "phoneNumber": 8886262732
     }
+  ],
+  "Sports": [
+    {
+      "id": 1,
+      "title": "Soccer Ball",
+      "description": "Official size and weight soccer ball.",
+      "price": 19.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/soccer_ball.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Tennis Racket",
+      "description": "Lightweight tennis racket for all skill levels.",
+      "price": 49.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/tennis_racket.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Basketball",
+      "description": "Durable indoor/outdoor basketball.",
+      "price": 29.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/basketball.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Baseball Glove",
+      "description": "Leather baseball glove for players.",
+      "price": 39.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/baseball_glove.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Yoga Mat",
+      "description": "Eco-friendly yoga mat for comfortable practice.",
+      "price": 25.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/yoga_mat.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Running Shoes",
+      "description": "Lightweight and breathable running shoes.",
+      "price": 89.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/running_shoes.jpg"
+    },
+    {
+      "id": 7,
+      "title": "Dumbbell Set",
+      "description": "Adjustable dumbbell set for home workouts.",
+      "price": 79.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/dumbbells.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Cycling Helmet",
+      "description": "Safety helmet for cycling enthusiasts.",
+      "price": 49.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/cycling_helmet.jpg"
+    },
+    {
+      "id": 9,
+      "title": "Fitness Tracker",
+      "description": "Track your workouts and heart rate.",
+      "price": 59.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/fitness_tracker.jpg"
+    },
+    {
+      "id": 10,
+      "title": "Golf Club Set",
+      "description": "Complete set of golf clubs for beginners.",
+      "price": 299.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/golf_club_set.jpg"
+    },
+    {
+      "id": 11,
+      "title": "Badminton Racket",
+      "description": "Lightweight racket for badminton games.",
+      "price": 34.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/badminton_racket.jpg"
+    },
+    {
+      "id": 12,
+      "title": "Surfboard",
+      "description": "Perfect for catching waves.",
+      "price": 499.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/surfboard.jpg"
+    },
+    {
+      "id": 13,
+      "title": "Hiking Backpack",
+      "description": "Durable backpack for hiking trips.",
+      "price": 89.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/hiking_backpack.jpg"
+    },
+    {
+      "id": 14,
+      "title": "Ski Goggles",
+      "description": "Anti-fog ski goggles for winter sports.",
+      "price": 59.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/ski_goggles.jpg"
+    },
+    {
+      "id": 15,
+      "title": "Skateboard",
+      "description": "Trendy skateboard for street riding.",
+      "price": 99.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/skateboard.jpg"
+    },
+    {
+      "id": 16,
+      "title": "Table Tennis Paddle",
+      "description": "High-quality paddle for table tennis.",
+      "price": 24.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/table_tennis_paddle.jpg"
+    },
+    {
+      "id": 17,
+      "title": "Baseball Bat",
+      "description": "Wooden baseball bat for better performance.",
+      "price": 79.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/baseball_bat.jpg"
+    },
+    {
+      "id": 18,
+      "title": "Wrestling Mat",
+      "description": "High-quality mat for wrestling practice.",
+      "price": 299.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/wrestling_mat.jpg"
+    },
+    {
+      "id": 19,
+      "title": "Football Cleats",
+      "description": "Cleats designed for optimal performance on the field.",
+      "price": 89.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/football_cleats.jpg"
+    },
+    {
+      "id": 20,
+      "title": "Rock Climbing Gear",
+      "description": "Essential gear for rock climbing.",
+      "price": 199.99,
+      "category": "Sports",
+      "thumbnail": "https://example.com/images/climbing_gear.jpg"
+    }
   ]
+
 }
