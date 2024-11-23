@@ -1,19 +1,13 @@
+
 import { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import StudentServices from "../../services/StudentServices";
-import { Badge, Button, Grid, Rating } from "@mui/material";
+import { Badge, Button, Grid, Rating, Card, CardContent, CardMedia, CardActions } from "@mui/material";
 import { Modal, Box, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
+
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Height } from "@mui/icons-material";
-import MainUi from "./MainUi";
 import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import NavigationIcon from '@mui/icons-material/Navigation';
 import Token from "../../common/Token";
 
 const style = {
@@ -92,6 +86,7 @@ const MainPage = ({ data }) => {
             );
         });
     };
+
     const removeFromCart = (id) => {
         setCart(prevCart => prevCart.filter(item => item.id !== id));
     };
@@ -113,36 +108,55 @@ const MainPage = ({ data }) => {
                     <ShoppingCartIcon />
                 </Fab>
             </Box>
+
             <Row>
-                {/* {location.pathname !== '/cart' && ( */}
-                    <>
-                        <h2>Main Page</h2>
-                        {userEmail}
-                        {userData && (
-                            <div>
-                                <h3>User Information</h3>
-                                <p>User Name: {userData.userName}</p>
-                            </div>
-                        )}
-                        {products.length > 0 ? (
-                            products.map((product) => (
-                                <div className="card" style={{ width: "18rem", margin: "10px" }} key={product.id}>
-                                    <img src={product.thumbnail} className="card-img-top" alt="No image" />
-                                    <div className="card-body">
-                                        <h5 className="card-title">{product.title}</h5>
-                                        <p className="card-price"><strong>Price: </strong>${product.price}</p>
-                                        <label>Feedback</label>
-                                        <Rating name="customized-10" defaultValue={2} max={5} />
-                                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                                            <Button variant="outlined" size="small" onClick={() => addToCart(product)}>Add to Cart</Button>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))
-                        ) : (<p>No products found</p>)}
-                    </>
-                {/* )} */}
+                <h2>Main Page</h2>
+                {userEmail}
+                {userData && (
+                    <div>
+                        <h3>User Information</h3>
+                        <p>User Name: {userData.userName}</p>
+                    </div>
+                )}
+
+                <Grid container spacing={3}>
+                    {products.length > 0 ? (
+                        products.map((product) => (
+                            <Grid item xs={12} sm={6} md={4} key={product.id}>
+                                <Card sx={{ maxWidth: 345 }}>
+                                    <CardMedia
+                                        component="img"
+                                        alt="No image"
+                                        height="140"
+                                        image={product.thumbnail}
+                                    />
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h5" component="div">
+                                            {product.title}
+                                        </Typography>
+                                        <Typography variant="body2" color="text.secondary">
+                                            <strong>Price:</strong> ${product.price}
+                                        </Typography>
+                                        <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                                            <label>Feedback</label>
+                                            <Rating name="customized-10" defaultValue={2} max={5} />
+                                        </Typography>
+                                    </CardContent>
+                                    <CardActions>
+                                        <Button variant="outlined" size="small" onClick={() => addToCart(product)}>
+                                            Add to Cart
+                                        </Button>
+                                    </CardActions>
+                                </Card>
+                            </Grid>
+                        ))
+                    ) : (
+                        <p>No products found</p>
+                    )}
+                </Grid>
             </Row>
+
+            {/* Shopping Cart Modal */}
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -158,13 +172,23 @@ const MainPage = ({ data }) => {
                             cart.map(item => (
                                 <div key={item.id}>
                                     <p>{item.title} - ${item.price} x {item.quantity}</p>
-                                    {/* Increase/Decrease buttons */}
+                                    <div>
+                                        <Button onClick={() => increaseQuantity(item.id)} size="small">
+                                            +
+                                        </Button>
+                                        <Button onClick={() => decreaseQuantity(item.id)} size="small">
+                                            -
+                                        </Button>
+                                        <Button onClick={() => removeFromCart(item.id)} size="small">
+                                            Remove
+                                        </Button>
+                                    </div>
                                 </div>
                             ))
                         ) : (
                             <p>Your cart is empty.</p>
                         )}
-                        <p>Total Price: ${totalPrice.toFixed(2)}</p>
+                        <p><strong>Total Price: </strong>${totalPrice.toFixed(2)}</p>
                     </Typography>
                     <Button
                         variant="contained"
@@ -176,7 +200,6 @@ const MainPage = ({ data }) => {
                     </Button>
                 </Box>
             </Modal>
-
         </>
     );
 };

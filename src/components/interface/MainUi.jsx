@@ -19,7 +19,8 @@ const pages = [
   { name: 'DashBoard', path: '/dashboard' },
   { name: 'Products', path: '/mainpage' },
   { name: 'About', path: '/About' },
-  { name: 'Contact', path: '/Contact' }
+  { name: 'Contact', path: '/Contact' },
+  { name: 'Games', path: '/games' }
 ];
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
