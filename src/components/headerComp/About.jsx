@@ -1,21 +1,46 @@
-const About=()=>{
-    return(
-        <div>
-            {/* <Row>
-                <Navbar expand="lg" className="bg-body-tertiary">
+import { useEffect, useState } from "react";
+import ReactPreparation from "../../services/reactServices";
+import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'; 
+const About = () => {
+    const [interQues, setInterQues] = useState([]);
+    const [expanded, setExpanded] = useState(false); 
 
-                    <Col>
-                        <Nav className="me-auto">
-                            <Nav.Link as={Link} to="/mainPage">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/About">About</Nav.Link>
-                            <Nav.Link as={Link} to="/Contact">contact</Nav.Link>
-                        </Nav>
-                    </Col>
-                </Navbar>
-            </Row> */}
-            <p>about</p>
-            {/* <button><Link to={"/mainPage"}>back to home page</Link></button> */}
+    useEffect(() => {
+        ReactPreparation.getInterviewQuestions()
+            .then((res) => setInterQues(res.data))
+            .catch((error) => console.error("Error fetching interview questions:", error));
+    }, []); 
+    const handleAccordionChange = (panel) => (event, newExpanded) => {
+        setExpanded(newExpanded ? panel : false); 
+    };
+    return (
+        <div>
+            <h1>React Interview Questions</h1>
+            {interQues.length === 0 ? (
+                <p>No questions available</p>
+            ) : (
+                interQues.map((data, index) => (
+                    <Accordion key={index} 
+                    expanded={expanded===`panel${index}`}
+                    onChange={handleAccordionChange(`panel${index}`)}
+                    >
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls={`panel${index}-content`}
+                            id={`panel${index}-header`}
+                    >
+                     {data.question}
+                    </AccordionSummary>
+                    <AccordionDetails>
+                    {data.answer}
+                    </AccordionDetails>
+                  </Accordion>
+                ))
+            )}
         </div>
-    )
-}
+    );
+};
+
 export default About;
+    

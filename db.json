@@ -189,6 +189,90 @@
       "category": "Sports",
       "thumbnail": "https://example.com/images/climbing_gear.jpg"
     }
+  ],
+  "interviewQuestions": [
+    {
+      "question": "What is React?",
+      "answer": "React is a JavaScript library for building user interfaces, developed by Facebook. It is used for building single-page applications by creating reusable UI components."
+    },
+    {
+      "question": "What is JSX?",
+      "answer": "JSX stands for JavaScript XML. It is a syntax extension for JavaScript that allows you to write HTML in React. JSX is used to describe what the UI should look like."
+    },
+    {
+      "question": "What are props in React?",
+      "answer": "Props (short for properties) are inputs to a React component. They allow you to pass data from one component to another, typically from a parent component to a child component."
+    },
+    {
+      "question": "What is state in React?",
+      "answer": "State is a built-in object used to contain data or information about the component. It can change over time, typically in response to user interactions or network responses."
+    },
+    {
+      "question": "What is the difference between state and props?",
+      "answer": "Props are read-only and passed from parent to child components, while state is mutable and managed within the component."
+    },
+    {
+      "question": "What is the Virtual DOM?",
+      "answer": "The Virtual DOM is a lightweight representation of the real DOM. React updates the Virtual DOM first, calculates the changes, and then efficiently updates the real DOM."
+    },
+    {
+      "question": "What are React Hooks?",
+      "answer": "React Hooks are functions that allow you to use state and other React features in functional components. Examples include useState, useEffect, useContext, etc."
+    },
+    {
+      "question": "What is the useEffect Hook?",
+      "answer": "The useEffect Hook is used for performing side effects in functional components. It can be used for data fetching, subscriptions, or manually changing the DOM."
+    },
+    {
+      "question": "What is a React component lifecycle?",
+      "answer": "The React component lifecycle refers to the series of events that occur from the creation to the destruction of a component. It includes mounting, updating, and unmounting phases."
+    },
+    {
+      "question": "What is Redux?",
+      "answer": "Redux is a state management library for JavaScript apps. It provides a centralized store for the entire application's state, making it easier to manage and debug the application."
+    }
+  ],
+  "topics": [
+    {
+      "topic": "JSX",
+      "description": "JSX allows you to write HTML-like code within JavaScript. Understanding JSX syntax is crucial for creating components in React."
+    },
+    {
+      "topic": "React Components",
+      "description": "Components are the heart of React. They allow you to split the UI into independent, reusable pieces. Components can be either class-based or functional."
+    },
+    {
+      "topic": "State and Props",
+      "description": "State allows components to manage and track data, while props enable data passing between components."
+    },
+    {
+      "topic": "React Lifecycle",
+      "description": "Components have a lifecycle that allows them to handle different phases such as initialization, updates, and cleanup."
+    },
+    {
+      "topic": "React Hooks",
+      "description": "Hooks like useState and useEffect enable functional components to use state and other React features."
+    },
+    {
+      "topic": "Event Handling",
+      "description": "React provides a way to handle events such as clicks, form submissions, and other user interactions."
+    },
+    {
+      "topic": "Conditional Rendering",
+      "description": "Conditional rendering allows you to display different UI elements based on conditions, such as rendering a loading spinner or data results."
+    },
+    {
+      "topic": "React Router",
+      "description": "React Router is used for navigating between different pages/views in a React application, enabling single-page applications."
+    },
+    {
+      "topic": "Redux",
+      "description": "Redux is a state management library that helps to manage the state of an entire application centrally."
+    },
+    {
+      "topic": "Performance Optimization",
+      "description": "Techniques like memoization and code splitting are used to improve the performance of React applications."
+    }
   ]
 
 }
