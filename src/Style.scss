@@ -85,3 +85,223 @@
 .submitButton:hover {
   background-color: #0056b3;
 }
+// /* Global styles for the profile page */
+// body {
+//   font-family: 'Roboto', sans-serif;
+//   background-color: #f7f7f7;  /* Soft background color */
+//   margin: 0;
+//   padding: 0;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100vh;
+// }
+
+h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #333;
+}
+
+/* Wrapper to handle the full viewport */
+// body, html {
+//   height: 100%; /* Ensure the body and html fill the entire viewport */
+//   margin: 0;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background-color: #f5f5f5; /* Optional background color */
+// }
+
+/* Style for the form container */
+// .form-container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%; /* Full width */
+//   height: 100%; /* Full height to center vertically */
+//   overflow: auto; /* Allow scrolling if content overflows */
+// }
+
+form {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 600px; /* Wider form for web view */
+  max-width: 100%;
+  align-items: center;
+  margin: 0 auto; /* Horizontally center the form */
+  position: relative;
+  max-height: 80vh; /* Limit the height of the form to 80% of the viewport */
+  // overflow-y: auto; /* Add vertical scrolling if content exceeds the height */
+}
+
+
+input[type="text"], input[type="email"], input[type="file"] {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 25px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #fafafa;
+  transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="email"]:focus {
+  border: 1px solid #007bff;
+  background-color: #e9f5ff;
+  outline: none;
+}
+
+.button{
+  width: 50%;
+  padding: 14px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+
+.profile-img-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.profile-img-container img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  cursor: pointer;
+  // border: 5px solid #007bff; /* Border around the profile picture */
+  transition: border 0.3s ease;
+}
+
+.profile-img-container img:hover {
+  border-color: #0056b3; /* Darker border on hover */
+}
+
+.profile-img-container input[type="file"] {
+  display: none;
+}
+
+.upload-btn {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 16px;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.upload-btn:hover {
+  text-decoration: underline;
+}
+
+/* Modal Styles */
+.MuiModal-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MuiModal-paper {
+  border-radius: 15px;
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  background-color: #fff;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+
+.MuiModal-paper img {
+  border-radius: 15px;
+  width: 100%;
+  height: auto;
+}
+
+.modal-header {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.MuiButton-root {
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 16px;
+}
+
+/* Button styling */
+.MuiButton-contained {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.MuiButton-contained:hover {
+  background-color: #0056b3;
+}
+
+.MuiButton-outlined {
+  color: #007bff;
+  border-color: #007bff;
+}
+
+.MuiButton-outlined:hover {
+  background-color: #e9f5ff;
+}
+
+/* Image Modal styling */
+.image-modal {
+  text-align: center;
+}
+
+.image-modal img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin-bottom: 25px;
+}
+
+.image-modal .MuiButton-contained {
+  margin-top: 15px;
+  width: 48%;
+  margin-right: 4%;
+}
+
+.image-modal .MuiButton-outlined {
+  margin-top: 15px;
+  width: 48%;
+}
+
+/* Responsive Styling for Web view */
+@media (max-width: 1024px) {
+  form {
+    width: 500px;
+    padding: 25px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  .profile-img-container img {
+    width: 100px;
+    height: 100px;
+  }
+
+  button[type="button"] {
+    font-size: 16px;
+  }
+}
+.darkmode{
+  width: 20%;
+}

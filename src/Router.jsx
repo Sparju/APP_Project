@@ -28,7 +28,7 @@ const RouterConfig=()=>{
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Mainui" element={<MainUi/>} />
-          <Route path="/Profile" element={<Profile/>} />
+          <Route path="/Profile" element={<Profile />} />
         </Routes>
     </>
   )

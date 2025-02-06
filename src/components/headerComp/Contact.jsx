@@ -12,7 +12,6 @@ const Contact = () => {
         }
     }, []);
 
-    console.log("background", background);
 
     return (
         <div 
