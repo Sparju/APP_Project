@@ -44,6 +44,8 @@ const Login = () => {
                     if (user.password === data.loginPassword) {
                         setAlert({ logsucc: true, loferr: false });
                         dispatch(login());
+                        Token.setUserEmail(data.loginEmail)
+                        Token.setProfilePic(user.profilePicture)
                         Token.setUserLogin(true);
                         navigate("/dashboard");
                     } else {
@@ -103,7 +105,7 @@ const Login = () => {
                             margin="normal"
                             name="loginPassword"
                             id="loginPassword"
-                            type={showPassword ? 'text' : 'password'}
+                             type={showPassword ? 'text' : 'password'}
                             onChange={formik.handleChange}
                             value={formik.values.loginPassword}
                             error={formik.touched.loginPassword && Boolean(formik.errors.loginPassword)}

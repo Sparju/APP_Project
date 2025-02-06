@@ -11,6 +11,7 @@ import Contact from "./components/headerComp/Contact";
 import MainUi from "./components/interface/MainUi";
 import Cart from "./components/interface/Cart";
 import Dashboard from "./components/Dashboard.jsx/DashBoard";
+import Profile from "./components/Profile/Profile";
 
 const RouterConfig=()=>{
   return(
@@ -27,6 +28,7 @@ const RouterConfig=()=>{
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Mainui" element={<MainUi/>} />
+          <Route path="/Profile" element={<Profile/>} />
         </Routes>
     </>
   )

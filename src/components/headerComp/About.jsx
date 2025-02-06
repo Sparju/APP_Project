@@ -1,6 +1,8 @@
+import WeatherApp from "../weather/Weather";
+
 const About=()=>{
     return(
-        <div>
+        <div>  
             {/* <Row>
                 <Navbar expand="lg" className="bg-body-tertiary">
 
@@ -14,6 +16,7 @@ const About=()=>{
                 </Navbar>
             </Row> */}
             <p>about</p>
+            <WeatherApp/>
             {/* <button><Link to={"/mainPage"}>back to home page</Link></button> */}
         </div>
     )

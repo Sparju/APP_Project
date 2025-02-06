@@ -29,7 +29,8 @@ const Register = () => {
             dob: "",
             password: "",
             confirmPassword: "",
-            phoneNumber: ""
+            phoneNumber: "",
+            profilePicture:""
         },
         validationSchema,
         onSubmit: (data, { resetForm }) => {
