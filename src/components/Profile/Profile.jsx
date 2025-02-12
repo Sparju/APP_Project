@@ -88,7 +88,7 @@ const Profile = ({ onProfileUpdate }) => {
   return (
     <>
       <h2>Update Profile</h2>
-      <form>
+      <form className="form">
         <div>
           <label>Name:</label>
           <input

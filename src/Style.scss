@@ -125,7 +125,7 @@ h2 {
 //   overflow: auto; /* Allow scrolling if content overflows */
 // }
 
-form {
+.form {
   background-color: #fff;
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -304,4 +304,8 @@ input[type="text"]:focus, input[type="email"]:focus {
 }
 .darkmode{
   width: 20%;
+}
+#loginEmail,#email,#userName{
+margin-bottom: 0px;
+border-radius: 0px;
 }
