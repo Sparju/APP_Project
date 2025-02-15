@@ -5,7 +5,7 @@
   "type": "module",
     "scripts": {
       "dev": "concurrently \"npm run server\" \"npm run dbjson\" \"vite\"",
-      "server": "json-server --watch db.json --port 3000",
+      "server": "json-server --watch db.json --port 5000",
       "dbjson": "dbjson --watch",
       "vite": "vite",
       "build": "vite build",

@@ -67,7 +67,8 @@ const Login = () => {
     };
 
     useEffect(() => {
-        StudentServices.getAllStudents().then(res => setData1(res.data)).catch(err => console.log(err));
+        StudentServices.getAllStudents().then((res) =>{ setData1(res.data);console.log("Data",res.data);
+        }).catch(err => console.log(err));
     }, []);
 
     // Timer for alerts

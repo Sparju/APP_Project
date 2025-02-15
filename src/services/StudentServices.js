@@ -2,6 +2,10 @@ import http from "../common/Http"
 const getAllStudents=()=>{
     return http.get("/students")
 }
+//node server with mongoDB data fetching
+const getAllUsers=()=>{
+    return http.get("/api/users")
+}
 
 const getStudents = (params) => {
     return http.get('/students', {
@@ -34,7 +38,8 @@ const StudentServices = {
     createStudentData,
     updateStudents,
     removeStudent,
-    removeAllStudents
+    removeAllStudents,
+    getAllUsers
 };
 export default StudentServices;
 
