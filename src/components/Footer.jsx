@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { useLocation } from "react-router-dom";
 
+
 const Footer = () => {
     const loc = useLocation();
     console.log("location Footer ", loc.pathname.replace("/", ""));
@@ -43,3 +44,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

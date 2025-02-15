@@ -1,3 +1,4 @@
+
 import WeatherApp from "../weather/Weather";
 
 const About=()=>{
@@ -18,7 +19,10 @@ const About=()=>{
             <p>about</p>
             <WeatherApp/>
             {/* <button><Link to={"/mainPage"}>back to home page</Link></button> */}
+
         </div>
-    )
-}
+    );
+};
+
 export default About;
+    

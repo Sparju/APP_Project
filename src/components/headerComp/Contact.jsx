@@ -28,6 +28,7 @@ const Contact = () => {
             }}
         >
             {/* <p>Contact us</p> */}
+
         </div>
     );
 };

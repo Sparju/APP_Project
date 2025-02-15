@@ -1,3 +1,4 @@
+
 import Profile from "../Profile/Profile";
 import React, { useEffect, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
@@ -6,14 +7,11 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
+
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
+
 import Token from '../../common/Token';
 import { createTheme, ThemeProvider } from "@mui/material";
 import DarkModeIcon from '@mui/icons-material/DarkMode';
@@ -25,6 +23,7 @@ const pages = [
   { name: 'Todos', path: '/dailtTodos' },
   { name: 'Topics', path: '/topics' },
   { name: 'Contact', path: '/Contact' }
+
 ];
 
 const settings = [
@@ -34,11 +33,14 @@ const settings = [
   { name: 'Logout', path: '/Logout' }
 ];
 
+
 function MainUi() {
+
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
   const [time, setTime] = useState(new Date().toLocaleTimeString());
+
 
   // Update time every second
   useEffect(() => {
@@ -65,6 +67,10 @@ function MainUi() {
     },
   });
 
+  const handleDarkModeToggle = () => {
+    setDarkMode((prevMode) => !prevMode);
+
+  };
   const handleDarkModeToggle = () => {
     setDarkMode((prevMode) => !prevMode);
   };
@@ -142,11 +148,14 @@ function MainUi() {
                   <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
                     <Typography component={Link} to={setting.path}>
                       {setting.name}
+
                     </Typography>
                   </MenuItem>
                 ))}
               </Menu>
             </Box>
+
+
           </Toolbar>
         </Container>
       </AppBar>
