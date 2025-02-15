@@ -12,6 +12,9 @@ import MainUi from "./components/interface/MainUi";
 import Cart from "./components/interface/Cart";
 import Dashboard from "./components/Dashboard.jsx/DashBoard";
 import Profile from "./components/Profile/Profile";
+import DailyTodos from "./components/React/DailyTodos";
+import Topics from "./components/React/Topics";
+import CreateTopics from "./components/React/CreateTopics";
 
 const RouterConfig=()=>{
   return(
@@ -29,6 +32,9 @@ const RouterConfig=()=>{
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Mainui" element={<MainUi/>} />
           <Route path="/Profile" element={<Profile />} />
+          <Route path="/dailtTodos" element={<DailyTodos/>} />
+          <Route path="/topics" element={<Topics />} />
+          <Route path="/createTopic" element={<CreateTopics />} />
         </Routes>
     </>
   )

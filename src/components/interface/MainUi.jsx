@@ -22,6 +22,8 @@ const pages = [
   { name: 'DashBoard', path: '/dashboard' },
   { name: 'Products', path: '/mainpage' },
   { name: 'About', path: '/About' },
+  { name: 'Todos', path: '/dailtTodos' },
+  { name: 'Topics', path: '/topics' },
   { name: 'Contact', path: '/Contact' }
 ];
 

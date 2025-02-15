@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { Box, Button, Grid, TextField, InputAdornment, IconButton, Alert } from "@mui/material";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import PasswordInput from "../../GlobalComponents/Password";
 
 const Login = () => {
     const [alert, setAlert] = useState({ loferr: false, logsucc: false });
@@ -98,31 +99,39 @@ const Login = () => {
                             error={formik.touched.loginEmail && Boolean(formik.errors.loginEmail)}
                             helperText={formik.touched.loginEmail && formik.errors.loginEmail}
                         />
-                        <TextField
-                            label="Password"
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                            name="loginPassword"
-                            id="loginPassword"
-                             type={showPassword ? 'text' : 'password'}
-                            onChange={formik.handleChange}
-                            value={formik.values.loginPassword}
-                            error={formik.touched.loginPassword && Boolean(formik.errors.loginPassword)}
-                            helperText={formik.touched.loginPassword && formik.errors.loginPassword}
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            onClick={() => setShowPassword(prev => !prev)}
-                                            edge="end"
-                                        >
-                                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
+                            {/* <TextField
+                                label="Password"
+                                variant="outlined"
+                                fullWidth
+                                margin="normal"
+                                name="loginPassword"
+                                id="loginPassword"
+                                type={showPassword ? 'text' : 'password'}
+                                onChange={formik.handleChange}
+                                value={formik.values.loginPassword}
+                                error={formik.touched.loginPassword && Boolean(formik.errors.loginPassword)}
+                                helperText={formik.touched.loginPassword && formik.errors.loginPassword}
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                onClick={() => setShowPassword(prev => !prev)}
+                                                edge="end"
+                                            >
+                                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            /> */}
+                        <PasswordInput
+                label="Password"
+                name="loginPassword"
+                value={formik.values.loginPassword}
+                onChange={formik.handleChange}
+                error={formik.touched.loginPassword && Boolean(formik.errors.loginPassword)}
+                helperText={formik.touched.loginPassword && formik.errors.loginPassword}
+            />
                         <Grid textAlign={"center"} mt={1}>
                             <Button type="submit" variant="contained">Submit</Button>
                         </Grid>

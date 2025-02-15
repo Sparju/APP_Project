@@ -1,7 +1,8 @@
+/* Main Page Styles */
 .mainpage {
   display: flex;
   flex-direction: column;
-  height: 100vh; 
+  height: 100vh;
 }
 
 .fixedHeader {
@@ -55,7 +56,7 @@
 }
 
 .regContainer {
-  max-width: 800px; 
+  max-width: 800px;
   max-height: 500px;
   margin: 50px auto;
   padding: 20px;
@@ -68,6 +69,7 @@
 .regContainer:hover {
   transform: translateY(-5px);
 }
+
 .textField {
   transition: border 0.3s ease;
 }
@@ -85,17 +87,6 @@
 .submitButton:hover {
   background-color: #0056b3;
 }
-// /* Global styles for the profile page */
-// body {
-//   font-family: 'Roboto', sans-serif;
-//   background-color: #f7f7f7;  /* Soft background color */
-//   margin: 0;
-//   padding: 0;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   height: 100vh;
-// }
 
 h2 {
   font-size: 32px;
@@ -105,47 +96,24 @@ h2 {
   color: #333;
 }
 
-/* Wrapper to handle the full viewport */
-// body, html {
-//   height: 100%; /* Ensure the body and html fill the entire viewport */
-//   margin: 0;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background-color: #f5f5f5; /* Optional background color */
-// }
-
-/* Style for the form container */
-// .form-container {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 100%; /* Full width */
-//   height: 100%; /* Full height to center vertically */
-//   overflow: auto; /* Allow scrolling if content overflows */
-// }
-
+/* Profile Form Styles */
 .form {
   background-color: #fff;
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   padding: 30px;
-  width: 600px; /* Wider form for web view */
+  width: 600px;
   max-width: 100%;
   align-items: center;
-  margin: 0 auto; /* Horizontally center the form */
+  margin: 0 auto;
   position: relative;
-  max-height: 80vh; /* Limit the height of the form to 80% of the viewport */
-  // overflow-y: auto; /* Add vertical scrolling if content exceeds the height */
+  max-height: 80vh;
 }
-
 
 input[type="text"], input[type="email"], input[type="file"] {
   width: 100%;
-  padding: 14px;
-  margin-bottom: 25px;
+  // padding: 14px;
   border: 1px solid #ddd;
-  border-radius: 10px;
   font-size: 16px;
   background-color: #fafafa;
   transition: border 0.3s ease, background-color 0.3s ease;
@@ -157,7 +125,7 @@ input[type="text"]:focus, input[type="email"]:focus {
   outline: none;
 }
 
-.button{
+.button {
   width: 50%;
   padding: 14px;
   background-color: #007bff;
@@ -168,8 +136,7 @@ input[type="text"]:focus, input[type="email"]:focus {
   transition: background-color 0.3s ease;
 }
 
-
-
+/* Profile Image Styles */
 .profile-img-container {
   display: flex;
   justify-content: center;
@@ -182,12 +149,11 @@ input[type="text"]:focus, input[type="email"]:focus {
   height: 120px;
   object-fit: cover;
   cursor: pointer;
-  // border: 5px solid #007bff; /* Border around the profile picture */
   transition: border 0.3s ease;
 }
 
 .profile-img-container img:hover {
-  border-color: #0056b3; /* Darker border on hover */
+  border-color: #0056b3;
 }
 
 .profile-img-container input[type="file"] {
@@ -240,7 +206,6 @@ input[type="text"]:focus, input[type="email"]:focus {
   font-size: 16px;
 }
 
-/* Button styling */
 .MuiButton-contained {
   background-color: #007bff;
   color: #fff;
@@ -282,9 +247,11 @@ input[type="text"]:focus, input[type="email"]:focus {
   width: 48%;
 }
 
-/* Responsive Styling for Web view */
+/* Responsive Styles for Various Screen Sizes */
+
+/* For devices smaller than 1024px (tablets and smaller devices) */
 @media (max-width: 1024px) {
-  form {
+  .form {
     width: 500px;
     padding: 25px;
   }
@@ -298,14 +265,99 @@ input[type="text"]:focus, input[type="email"]:focus {
     height: 100px;
   }
 
-  button[type="button"] {
+  .button {
     font-size: 16px;
   }
 }
-.darkmode{
-  width: 20%;
+
+/* For mobile devices smaller than 768px */
+@media (max-width: 768px) {
+  .mainpage {
+    flex-direction: column;
+  }
+
+  .fixedHeader {
+    width: 100%;
+  }
+
+  #bdy {
+    margin-top: 80px;
+    padding: 15px;
+  }
+
+  .Cartdata {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .Footer {
+    width: 100%;
+  }
+
+  .logContainer, .regContainer {
+    width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .form {
+    width: 100%;
+    padding: 20px;
+  }
+
+  input[type="text"], input[type="email"], input[type="file"] {
+    padding: 12px;
+  }
+
+  .button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .profile-img-container img {
+    width: 80px;
+    height: 80px;
+  }
 }
-#loginEmail,#email,#userName{
-margin-bottom: 0px;
-border-radius: 0px;
+
+/* For extra small devices (phones with smaller screens) */
+@media (max-width: 480px) {
+  .form {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .profile-img-container img {
+    width: 70px;
+    height: 70px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .button {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+/* For very small devices like feature phones */
+@media (max-width: 360px) {
+  .form {
+    padding: 10px;
+  }
+
+  .profile-img-container img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .button {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
 }

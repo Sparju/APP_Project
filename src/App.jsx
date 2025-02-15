@@ -9,6 +9,8 @@ import './Style.scss';
 import Footer from './components/Footer';
 import { Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
 
 const App = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -30,21 +32,32 @@ const App = () => {
   const handleLogout = () => {
     dispatch(logout());
   };
-
+  const theme = createTheme({
+    // Customize your theme here
+    palette: {
+        primary: {
+            main: "#1976d2", // Customize primary color
+        },
+    },
+});
 
   return (
     <Container className='mainpage'>
+              <ThemeProvider theme={theme}>
       <Row className='fixedHeader' >
         {isLoggedIn && <MainUi />}
       </Row>
       <body id='bdy'>
-      <RouterConfig />
+        <RouterConfig />
       </body>
-        
-      
-      <Row className='Footer'>
-        {isLoggedIn && <Footer />}
-      </Row>
+
+
+      {isLoggedIn &&
+        <Row className='Footer'>
+          <Footer />
+        </Row>
+      }
+      </ThemeProvider>
     </Container>
   );
 };
