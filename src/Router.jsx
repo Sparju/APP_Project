@@ -11,7 +11,12 @@ import Contact from "./components/headerComp/Contact";
 import MainUi from "./components/interface/MainUi";
 import Cart from "./components/interface/Cart";
 import Dashboard from "./components/Dashboard.jsx/DashBoard";
-import Games from "./components/Games/Games";
+
+import Profile from "./components/Profile/Profile";
+import DailyTodos from "./components/React/DailyTodos";
+import Topics from "./components/React/Topics";
+import CreateTopics from "./components/React/CreateTopics";
+
 
 const RouterConfig=()=>{
   return(
@@ -28,7 +33,12 @@ const RouterConfig=()=>{
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Mainui" element={<MainUi/>} />
-          <Route path="/games" element={<Games/>}/>
+
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/dailtTodos" element={<DailyTodos/>} />
+          <Route path="/topics" element={<Topics />} />
+          <Route path="/createTopic" element={<CreateTopics />} />
+
         </Routes>
     </>
   )

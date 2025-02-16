@@ -1,47 +1,34 @@
 import { useEffect, useState } from "react";
-import ReactPreparation from "../../services/reactServices";
-import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Token from "../../common/Token";
 
 const Contact = () => {
-    const [topics, setTopics] = useState([]);
-    const [expanded, setExpanded] = useState(false); 
+    const [background, setBackground] = useState("");
 
     useEffect(() => {
-        ReactPreparation.getTopics()
-            .then((res) => setTopics(res.data))
-            .catch((error) => console.error("Error fetching interview questions:", error));
+        setBackground("")
+        const profilePic = Token.getProfilePic();
+        if (profilePic) {
+            setBackground(profilePic);
+        }
     }, []);
 
-    const handleAccordionChange = (panel) => (event, newExpanded) => {
-        setExpanded(newExpanded ? panel : false); 
-    };
 
     return (
-        <div>
-            <h1>React Interview Questions</h1>
-            {topics.length === 0 ? (
-                <p>No topics available</p>
-            ) : (
-                topics.map((data, index) => (
-                    <Accordion
-                        key={index}
-                        expanded={expanded === `panel${index}`} 
-                        onChange={handleAccordionChange(`panel${index}`)} 
-                    >
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls={`panel${index}-content`}
-                            id={`panel${index}-header`}
-                        >
-                            {data.topic}
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <p>{data.description}</p>
-                        </AccordionDetails>
-                    </Accordion>
-                ))
-            )}
+        <div 
+        style={{
+            backgroundImage: background ? `url(${background})` : "none", 
+            height: '100vh', // Full viewport height
+            backgroundSize: 'contain', // Ensures the full image is visible without cropping
+            backgroundPosition: 'center', // Centers the image in the div
+            width: '100%', // Full width
+            backgroundRepeat: 'no-repeat', // Prevents repeating the image
+            display: 'flex', // Centers content vertically and horizontally
+            justifyContent: 'center',
+            alignItems: 'center',
+            }}
+        >
+            {/* <p>Contact us</p> */}
+
         </div>
     );
 };
